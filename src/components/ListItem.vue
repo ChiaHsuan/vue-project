@@ -34,7 +34,7 @@ function toggleChildren(item) {
     currentIndex.value = item.index
   } else {
     // close sub menu
-    reset
+    reset()
   }
 }
 </script>

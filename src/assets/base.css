@@ -26,10 +26,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-a {
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  background-color: transparent;
   text-decoration: none;
-}
-
-a:active {
-  background-color: none;
 }

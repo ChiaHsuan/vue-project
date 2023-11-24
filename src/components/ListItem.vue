@@ -63,10 +63,12 @@ function toggleChildren(item) {
 .list {
   list-style: none;
   padding: 0.5rem 0 0.5rem 0.8rem;
+  background-color: rgb(187, 185, 185);
 }
 .link-text {
   display: inline-block;
   padding: 0.5rem 0;
+  width: 100%;
 }
 .active-text {
   color: yellow;

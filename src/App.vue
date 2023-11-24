@@ -2,6 +2,7 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import apiData from './assets/exampleData.json'
 import ListItem from './components/ListItem.vue'
+import TheSquare from './components/TheSquare.vue'
 
 const showMenu = ref(false)
 const defaultData = apiData.map((item) => {
@@ -42,7 +43,9 @@ function closeMenu() {
       <ListItem :data="currentData" />
     </div>
     <!-- 九宮格 -->
-    <div class="content"></div>
+    <div class="content">
+      <TheSquare />
+    </div>
   </div>
 </template>
 

@@ -4,7 +4,13 @@ import apiData from './assets/exampleData.json'
 import ListItem from './components/ListItem.vue'
 
 const showMenu = ref(false)
-const currentData = computed(() => apiData)
+const defaultData = apiData.map((item) => {
+  return {
+    key: item.key,
+    text: item.text
+  }
+})
+const currentData = computed(() => (showMenu.value ? apiData : defaultData))
 
 onMounted(() => {
   document.addEventListener('click', closeMenu)

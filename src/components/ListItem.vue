@@ -1,15 +1,31 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, toRefs, watch } from 'vue'
 
-defineProps({
+const props = defineProps({
   data: {
     type: Array,
     required: true
   }
 })
 
+const { data: reactiveData } = toRefs(props)
 const currentChildren = ref([])
 const currentIndex = ref(-1)
+
+/**
+ * 若 parent 資料有變化, 移除所有的 sub menu
+ */
+watch(reactiveData, () => {
+  reset()
+})
+
+/**
+ * Reset Data
+ */
+function reset() {
+  currentIndex.value = -1
+  currentChildren.value = []
+}
 
 function toggleChildren(item) {
   if (currentIndex.value !== item.index) {
@@ -18,8 +34,7 @@ function toggleChildren(item) {
     currentIndex.value = item.index
   } else {
     // close sub menu
-    currentIndex.value = -1
-    currentChildren.value = []
+    reset
   }
 }
 </script>

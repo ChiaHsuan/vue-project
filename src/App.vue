@@ -1,9 +1,10 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import apiData from './assets/exampleData.json'
+import ListItem from './components/ListItem.vue'
 
-console.log(apiData)
 const showMenu = ref(false)
+const currentData = computed(() => apiData)
 
 onMounted(() => {
   document.addEventListener('click', closeMenu)
@@ -31,7 +32,9 @@ function closeMenu() {
       </div>
     </header>
     <!-- Menu -->
-    <div class="menu-container" :class="showMenu ? 'menu-container__active' : ''"></div>
+    <div class="menu-container" :class="showMenu ? 'menu-container__active' : ''">
+      <ListItem :data="currentData" />
+    </div>
     <!-- 九宮格 -->
     <div class="content"></div>
   </div>
